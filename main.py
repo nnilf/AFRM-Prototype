@@ -2,7 +2,7 @@
 import csv
 from pathlib import Path
 
-from calculations import fuel_at_arrival, endurance_hours, range_nm
+from calculations import flight_time_hours, fuel_at_arrival, endurance_hours, range_km, reserve_margin
 from status import fuel_status
 from validation import validate_inputs
 
@@ -21,23 +21,27 @@ def print_disclaimer():
 
 def print_flight(row):
     try:
-        fuel, fuel_flow, time_min, groundspeed, protected = validate_inputs(
-            row["fuel_kg"], row["fuel_flow_kg_h"], row["time_min"],
-            row["groundspeed_kt"], row["protected_kg"])
+        fuel, fuel_flow, distance, groundspeed, protected = validate_inputs(
+            row["fuel_kg"], row["fuel_flow_kg_h"], row["distance_km"],
+            row["groundspeed_kmh"], row["protected_kg"])
     except ValueError as error:
         print(f"{row['flight']:<8}INVALID: {error}")
         return
 
-    arrival = fuel_at_arrival(fuel, fuel_flow, time_min)
+    flight_time = flight_time_hours(distance, groundspeed)
+    arrival = fuel_at_arrival(fuel, fuel_flow, flight_time)
     endurance = endurance_hours(fuel, protected, fuel_flow)
-    distance = range_nm(endurance, groundspeed)
+    available_range = range_km(endurance, groundspeed)
+    margin = reserve_margin(arrival, protected)
     status = fuel_status(arrival, protected)
 
-    print(f"{row['flight']:<8}{arrival:>12.0f}{endurance:>12.2f}{distance:>10.0f}  {status:<10}{WARNINGS[status]}")
+    print(f"{row['flight']:<8}{flight_time:>8.2f}{arrival:>12.0f}{margin:>11.0f}"
+          f"{endurance:>10.2f}{available_range:>10.0f}  {status:<10}{WARNINGS[status]}")
 
 
 print_disclaimer()
-print(f"{'Flight':<8}{'Arrival kg':>12}{'Endur. h':>12}{'Range NM':>10}  {'Status':<10}Warning")
+print(f"{'Flight':<8}{'Time h':>8}{'Arrival kg':>12}{'Margin kg':>11}"
+      f"{'Endur. h':>10}{'Range km':>10}  {'Status':<10}Warning")
 with open(Path(__file__).parent / "flights.csv", newline="") as file:
     for row in csv.DictReader(file):
         print_flight(row)

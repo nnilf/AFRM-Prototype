@@ -17,12 +17,12 @@ def check_number(name, value, allow_zero=True):
 
 
 # FR-01: check all inputs for one flight.
-# Fuel flow and protected fuel cannot be zero because we divide by them.
-def validate_inputs(fuel, fuel_flow, time_min, groundspeed, protected):
+# Fuel flow, groundspeed and protected fuel cannot be zero because we divide by them.
+def validate_inputs(fuel, fuel_flow, distance, groundspeed, protected):
     return (
         check_number("fuel", fuel),
         check_number("fuel_flow", fuel_flow, allow_zero=False),
-        check_number("time_min", time_min),
-        check_number("groundspeed", groundspeed),
+        check_number("distance", distance),
+        check_number("groundspeed", groundspeed, allow_zero=False),
         check_number("protected", protected, allow_zero=False),
     )

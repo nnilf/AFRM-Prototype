@@ -4,7 +4,7 @@ from validation import check_number, validate_inputs
 
 
 def test_fr01_accepts_valid_inputs():
-    assert validate_inputs("6000", 2400, 90, 450, 1875) == (6000, 2400, 90, 450, 1875)
+    assert validate_inputs("6000", 2400, 1200, 800, 1875) == (6000, 2400, 1200, 800, 1875)
 
 
 def test_fr01_rejects_negative():
@@ -14,12 +14,17 @@ def test_fr01_rejects_negative():
 
 def test_fr01_rejects_zero_fuel_flow():
     with pytest.raises(ValueError):
-        validate_inputs(6000, 0, 90, 450, 1875)
+        validate_inputs(6000, 0, 1200, 800, 1875)
+
+
+def test_fr01_rejects_zero_groundspeed():
+    with pytest.raises(ValueError):
+        validate_inputs(6000, 2400, 1200, 0, 1875)
 
 
 def test_fr01_rejects_zero_protected():
     with pytest.raises(ValueError):
-        validate_inputs(6000, 2400, 90, 450, 0)
+        validate_inputs(6000, 2400, 1200, 800, 0)
 
 
 def test_fr01_rejects_non_numeric():

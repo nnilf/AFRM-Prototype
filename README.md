@@ -28,7 +28,7 @@ The benchmark times depend on the computer, so they will be slightly different o
 | File | What it does |
 |---|---|
 | `validation.py` | Checks the inputs (FR-01) |
-| `calculations.py` | Fuel at arrival, endurance and range for one flight (FR-02, FR-03) |
+| `calculations.py` | Flight time, fuel at arrival, endurance, range and reserve margin for one flight (FR-02, FR-03, FR-04) |
 | `status.py` | CRITICAL, CAUTION or NORMAL status (FR-04) |
 | `main.py` | Prints the results table, warnings and disclaimer (FR-05) |
 | `generate_flights.py` | Makes the simulated flight data |
@@ -39,8 +39,8 @@ The benchmark times depend on the computer, so they will be slightly different o
 
 | Requirement | Tests |
 |---|---|
-| FR-01 Validate inputs | `test_validation.py`: `test_fr01_accepts_valid_inputs`, `test_fr01_rejects_negative`, `test_fr01_rejects_zero_fuel_flow`, `test_fr01_rejects_zero_protected`, `test_fr01_rejects_non_numeric`, `test_fr01_rejects_nan`, `test_fr01_rejects_infinity` |
-| FR-02 Fuel at arrival | `test_calculations.py`: `test_fr02_fuel_at_arrival`<br>`test_properties.py`: `test_fr02_arrival_fuel_never_more_than_current_fuel`<br>`test_batch.py`: `test_fr02_fr03_numpy_matches_plain_python` |
+| FR-01 Validate inputs | `test_validation.py`: `test_fr01_accepts_valid_inputs`, `test_fr01_rejects_negative`, `test_fr01_rejects_zero_fuel_flow`, `test_fr01_rejects_zero_groundspeed`, `test_fr01_rejects_zero_protected`, `test_fr01_rejects_non_numeric`, `test_fr01_rejects_nan`, `test_fr01_rejects_infinity` |
+| FR-02 Flight time and fuel at arrival | `test_calculations.py`: `test_fr02_flight_time`, `test_fr02_fuel_at_arrival`<br>`test_properties.py`: `test_fr02_arrival_fuel_never_more_than_current_fuel`<br>`test_batch.py`: `test_fr02_fr03_numpy_matches_plain_python` |
 | FR-03 Endurance and range | `test_calculations.py`: `test_fr03_endurance_and_range`, `test_fr03_no_usable_fuel_below_protected`<br>`test_properties.py`: `test_fr03_more_fuel_flow_never_increases_range`, `test_fr03_endurance_never_negative`<br>`test_batch.py`: `test_fr02_fr03_numpy_matches_plain_python` |
-| FR-04 Fuel status | `test_status.py`: `test_fr04_just_below_1_00_is_critical`, `test_fr04_exactly_1_00_is_caution`, `test_fr04_just_below_1_25_is_caution`, `test_fr04_exactly_1_25_is_normal`, `test_fr04_negative_arrival_fuel_is_critical`<br>`test_properties.py`: `test_fr04_status_is_always_one_of_three` |
+| FR-04 Reserve margin and fuel status | `test_calculations.py`: `test_fr04_reserve_margin`<br>`test_status.py`: `test_fr04_just_below_1_00_is_critical`, `test_fr04_exactly_1_00_is_caution`, `test_fr04_just_below_1_25_is_caution`, `test_fr04_exactly_1_25_is_normal`, `test_fr04_negative_arrival_fuel_is_critical`<br>`test_properties.py`: `test_fr04_status_is_always_one_of_three` |
 | FR-05 Understandable results and warnings | No automated test. Checked by running `python main.py` and reading the output. |

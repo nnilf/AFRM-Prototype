@@ -8,21 +8,21 @@ from pathlib import Path
 import numpy as np
 
 from batch_calculations import calculate_batch
-from calculations import fuel_at_arrival, endurance_hours, range_nm
+from calculations import flight_time_hours, fuel_at_arrival, endurance_hours, range_km
 from generate_flights import make_flight
 
 REPEATS = 5
 
 
 def run_python(rows):
-    for fuel, fuel_flow, time_min, groundspeed, protected in rows:
-        fuel_at_arrival(fuel, fuel_flow, time_min)
-        range_nm(endurance_hours(fuel, protected, fuel_flow), groundspeed)
+    for fuel, fuel_flow, distance, groundspeed, protected in rows:
+        fuel_at_arrival(fuel, fuel_flow, flight_time_hours(distance, groundspeed))
+        range_km(endurance_hours(fuel, protected, fuel_flow), groundspeed)
 
 
 def run_numpy(columns):
-    fuel, fuel_flow, time_min, groundspeed, protected = columns
-    calculate_batch(fuel, fuel_flow, time_min, groundspeed, protected)
+    fuel, fuel_flow, distance, groundspeed, protected = columns
+    calculate_batch(fuel, fuel_flow, distance, groundspeed, protected)
 
 
 def seconds_taken(function, data):
