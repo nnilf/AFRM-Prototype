@@ -17,11 +17,14 @@ Run these in order from the project folder with the venv active.
 ```powershell
 python generate_flights.py   # makes flights.csv (the same 50 flights every time)
 python main.py               # prints the results table, statuses and warnings
+python -m ruff check .       # checks code quality with Ruff
 python -m pytest -v          # runs all the tests
 python benchmark.py          # times plain Python against NumPy, saves benchmark_results.csv
 ```
 
 The benchmark times depend on the computer, so they will be slightly different on each run.
+
+GitHub Actions runs the Ruff check and all the tests automatically on every push (see `.github/workflows/tests.yml`).
 
 ## Files
 

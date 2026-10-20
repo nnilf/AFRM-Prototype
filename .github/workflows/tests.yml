@@ -1,4 +1,4 @@
-# Runs all the tests on GitHub every time code is pushed or a pull request is opened.
+# Runs Ruff and all the tests on GitHub every time code is pushed or a pull request is opened.
 name: Tests
 
 on: [push, pull_request]
@@ -12,4 +12,5 @@ jobs:
         with:
           python-version: "3.13"
       - run: python -m pip install -r requirements.txt
+      - run: python -m ruff check .
       - run: python -m pytest -v

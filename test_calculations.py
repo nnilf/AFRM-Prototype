@@ -1,4 +1,10 @@
-from calculations import flight_time_hours, fuel_at_arrival, endurance_hours, range_km, reserve_margin
+from calculations import (
+    endurance_hours,
+    flight_time_hours,
+    fuel_at_arrival,
+    range_km,
+    reserve_margin,
+)
 
 
 def test_fr02_flight_time():

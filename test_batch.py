@@ -3,7 +3,7 @@ import random
 import numpy as np
 
 from batch_calculations import calculate_batch
-from calculations import flight_time_hours, fuel_at_arrival, endurance_hours, range_km
+from calculations import endurance_hours, flight_time_hours, fuel_at_arrival, range_km
 from generate_flights import make_flight
 
 

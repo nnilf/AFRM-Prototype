@@ -2,7 +2,7 @@
 from hypothesis import given
 from hypothesis import strategies as st
 
-from calculations import flight_time_hours, fuel_at_arrival, endurance_hours, range_km
+from calculations import endurance_hours, flight_time_hours, fuel_at_arrival, range_km
 from status import fuel_status
 
 fuel_values = st.floats(min_value=0, max_value=200000)
