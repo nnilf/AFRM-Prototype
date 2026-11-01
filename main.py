@@ -20,9 +20,7 @@ WARNINGS = {
 
 
 def print_disclaimer():
-    print("PROTOTYPE ONLY - NOT FOR OPERATIONAL USE. All flight data is simulated.")
-    print("Statuses are illustrative prototype bands, not MINIMUM FUEL or MAYDAY FUEL declarations.")
-    print()
+    print("Prototype")
 
 
 def print_flight(row):
