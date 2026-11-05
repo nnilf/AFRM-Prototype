@@ -1,0 +1,25 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.16, pytest-9.1.1, pluggy-1.7.0
+rootdir: C:\Development\AFRM-Prototype
+plugins: hypothesis-6.170.2, platformdirs-4.14.3, cov-7.1.0
+collected 23 items
+
+test_batch.py .                                                          [  4%]
+test_calculations.py .....                                               [ 26%]
+test_properties.py ....                                                  [ 43%]
+test_status.py .....                                                     [ 65%]
+test_validation.py ........                                              [100%]
+
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.13.16-final-0 _______________
+
+Name                    Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------
+batch_calculations.py       7      0      0      0   100%
+calculations.py            11      0      0      0   100%
+main.py                    28     28      2      0     0%   2-53
+status.py                   7      0      4      0   100%
+validation.py              15      0      6      0   100%
+-------------------------------------------------------------------
+TOTAL                      68     28     12      0    62%
+============================= 23 passed in 1.33s ==============================

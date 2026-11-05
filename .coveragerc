@@ -1,0 +1,8 @@
+[run]
+branch = True
+source = .
+omit =
+    test_*.py
+    benchmark.py
+    generate_flights.py
+    .venv/*
