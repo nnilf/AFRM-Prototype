@@ -43,11 +43,16 @@ def print_flight(row):
           f"{endurance:>10.2f}{available_range:>10.0f}  {status:<10}{WARNINGS[status]}")
 
 
-print_disclaimer()
-print(f"{'Flight':<8}{'Time h':>8}{'Arrival kg':>12}{'Margin kg':>11}"
-      f"{'Endur. h':>10}{'Range km':>10}  {'Status':<10}Warning")
-with open(Path(__file__).parent / "flights.csv", newline="") as file:
-    for row in csv.DictReader(file):
-        print_flight(row)
-print()
-print_disclaimer()
+def run(csv_path):
+    print_disclaimer()
+    print(f"{'Flight':<8}{'Time h':>8}{'Arrival kg':>12}{'Margin kg':>11}"
+          f"{'Endur. h':>10}{'Range km':>10}  {'Status':<10}Warning")
+    with open(csv_path, newline="") as file:
+        for row in csv.DictReader(file):
+            print_flight(row)
+    print()
+    print_disclaimer()
+
+
+if __name__ == "__main__":
+    run(Path(__file__).parent / "flights.csv")
