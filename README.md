@@ -19,7 +19,7 @@ python generate_flights.py   # makes flights.csv (the same 50 flights every time
 python main.py               # prints the results table, statuses and warnings
 python -m ruff check .       # checks code quality with Ruff
 python -m pytest -v --cov --cov-report=term-missing   # runs all the tests and shows coverage
-python benchmark.py          # times plain Python against NumPy, saves benchmark_results.csv
+python benchmark.py          # times plain Python against NumPy, saves benchmark_results.csv, prints the medians and target result
 ```
 
 The benchmark times depend on the computer, so they will be slightly different on each run.
