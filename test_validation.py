@@ -40,3 +40,18 @@ def test_fr01_rejects_nan():
 def test_fr01_rejects_infinity():
     with pytest.raises(ValueError):
         check_number("fuel", float("inf"))
+
+
+def test_fr01_rejects_blank():
+    with pytest.raises(ValueError, match="fuel must be a number"):
+        check_number("fuel", "")
+
+
+def test_fr01_rejects_none():
+    with pytest.raises(ValueError, match="fuel must be a number"):
+        check_number("fuel", None)
+
+
+def test_fr01_rejects_negative_infinity():
+    with pytest.raises(ValueError, match="fuel must be a finite number"):
+        check_number("fuel", float("-inf"))

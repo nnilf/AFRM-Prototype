@@ -17,6 +17,18 @@ def test_fr02_fuel_at_arrival():
     assert fuel_at_arrival(6000, 2400, 1.5) == 2400
 
 
+def test_fr02_zero_distance_keeps_all_fuel():
+    # 0 km / 800 km/h = 0 h, then 6000 - 2400 x 0 = 6000
+    flight_time = flight_time_hours(0, 800)
+    assert flight_time == 0
+    assert fuel_at_arrival(6000, 2400, flight_time) == 6000
+
+
+def test_fr02_arrival_exactly_zero():
+    # 3600 - 2400 x 1.5 = 0
+    assert fuel_at_arrival(3600, 2400, 1.5) == 0
+
+
 def test_fr03_endurance_and_range():
     # (6000 - 1875) / 2400 = 1.71875 h, then x 800 km/h = 1375 km
     endurance = endurance_hours(6000, 1875, 2400)
@@ -26,6 +38,11 @@ def test_fr03_endurance_and_range():
 
 def test_fr03_no_usable_fuel_below_protected():
     assert endurance_hours(1500, 1875, 2400) == 0
+
+
+def test_fr03_fuel_equal_to_protected_gives_zero():
+    # (1875 - 1875) / 2400 = 0
+    assert endurance_hours(1875, 1875, 2400) == 0
 
 
 def test_fr04_reserve_margin():
