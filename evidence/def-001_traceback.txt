@@ -1,0 +1,47 @@
+DEF-001: a CSV with a missing or renamed column crashes main.py with a KeyError
+Commit: 4b683a8af46b739037a7c0765ca9c3c2fe2c3194 (before the fix)
+Command: python -m pytest test_main.py -k column --tb=short -p no:cacheprovider
+
+============================= test session starts =============================
+platform win32 -- Python 3.13.16, pytest-9.1.1, pluggy-1.7.0
+rootdir: C:\Development\AFRM-Prototype
+plugins: hypothesis-6.170.2, platformdirs-4.14.3, cov-7.1.0
+collected 7 items / 5 deselected / 2 selected
+
+test_main.py FF                                                          [100%]
+
+================================== FAILURES ===================================
+_________________ test_fr05_missing_column_gives_clear_error __________________
+test_main.py:51: in test_fr05_missing_column_gives_clear_error
+    output = run_csv("FLT001,Test,6000,1200,800,1000\n", tmp_path, capsys, header)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test_main.py:9: in run_csv
+    main.run(csv_file)
+main.py:52: in run
+    print_flight(row)
+main.py:29: in print_flight
+    row["fuel_kg"], row["fuel_flow_kg_h"], row["distance_km"],
+                    ^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'fuel_flow_kg_h'
+---------------------------- Captured stdout call -----------------------------
+Prototype
+Flight    Time h  Arrival kg  Margin kg  Endur. h  Range km  Status    Warning
+_________________ test_fr05_renamed_column_gives_clear_error __________________
+test_main.py:59: in test_fr05_renamed_column_gives_clear_error
+    output = run_csv("FLT001,Test,6000,2400,1200,800,1000\n", tmp_path, capsys, header)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test_main.py:9: in run_csv
+    main.run(csv_file)
+main.py:52: in run
+    print_flight(row)
+main.py:29: in print_flight
+    row["fuel_kg"], row["fuel_flow_kg_h"], row["distance_km"],
+    ^^^^^^^^^^^^^^
+E   KeyError: 'fuel_kg'
+---------------------------- Captured stdout call -----------------------------
+Prototype
+Flight    Time h  Arrival kg  Margin kg  Endur. h  Range km  Status    Warning
+=========================== short test summary info ===========================
+FAILED test_main.py::test_fr05_missing_column_gives_clear_error - KeyError: '...
+FAILED test_main.py::test_fr05_renamed_column_gives_clear_error - KeyError: '...
+======================= 2 failed, 5 deselected in 0.49s =======================

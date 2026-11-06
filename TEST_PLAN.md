@@ -16,7 +16,7 @@ I ranked each failure by how misleading it would be. A result that looks safe wh
 | Wrong CSV columns | Data can't be read properly | High | CSV tests through `main.py` |
 | Wrong CSV units | Numbers are wrong but look fine | High | Can't be tested from the values, see Limitations |
 | Python and NumPy disagree | Two different answers for one flight | High | Compare both, plus hand-worked answers |
-| Unclear warning | The user may misread the result | Medium | Output tests through `main.py` |
+| Missing or unclear warning | A low fuel state could be missed or misread | High | Output tests through `main.py` |
 | False CRITICAL or CAUTION | Too cautious, but it would get checked | Medium | Boundary tests |
 | Slow batch calculations | Inconvenient, but the results are still right | Low | Benchmark |
 
@@ -32,7 +32,9 @@ The README already lists the existing tests for each requirement. These are the 
 | FR-02, FR-03 | `test_fr02_fr03_numpy_matches_hand_values`, `test_fr02_fr03_numpy_matches_python_for_any_flight` | Known answers and comparison | NumPy matches the hand values, and Python to within 0.000001 |
 | FR-05 | `test_fr05_critical_warning`, `test_fr05_caution_warning`, `test_fr05_normal_has_no_warning` | CSV through `main.py` | The right status and warning are printed |
 | FR-05 | `test_fr05_invalid_row_does_not_stop_later_rows`, `test_fr05_disclaimer_before_and_after_table` | CSV through `main.py` | The bad row prints `INVALID`, the rest still run, and the disclaimer prints twice |
-| FR-05 | `test_fr05_missing_column_gives_clear_error` | CSV through `main.py` | A clear error is printed instead of a crash |
+| FR-05 | `test_fr05_missing_column_gives_clear_error`, `test_fr05_renamed_column_gives_clear_error` | CSV through `main.py` | A clear error is printed instead of a crash, and the disclaimer still prints |
+
+While planning these tests I found a real defect, DEF-001. A CSV with a missing or renamed column crashed `main.py` with a `KeyError`, and the closing disclaimer was not printed. The two column tests reproduced it before I fixed it, and that failure is saved in `evidence/def-001_traceback.txt`.
 
 I also plan one challenge test, `test_challenge.py`, which runs a two-leg route with different speeds and fuel flows. I chose it on purpose to test the constant speed and fuel flow assumption, so it shows a limit of the model and not a bug.
 

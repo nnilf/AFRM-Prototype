@@ -3,9 +3,9 @@ import main
 HEADER = "flight,aircraft,fuel_kg,fuel_flow_kg_h,distance_km,groundspeed_kmh,protected_kg\n"
 
 
-def run_csv(rows, tmp_path, capsys):
+def run_csv(rows, tmp_path, capsys, header=HEADER):
     csv_file = tmp_path / "flights.csv"
-    csv_file.write_text(HEADER + rows)
+    csv_file.write_text(header + rows)
     main.run(csv_file)
     return capsys.readouterr().out
 
@@ -44,3 +44,19 @@ def test_fr05_disclaimer_before_and_after_table(tmp_path, capsys):
     lines = output.splitlines()
     assert lines[0] == "Prototype"
     assert lines[-1] == "Prototype"
+
+
+def test_fr05_missing_column_gives_clear_error(tmp_path, capsys):
+    header = HEADER.replace("fuel_flow_kg_h,", "")
+    output = run_csv("FLT001,Test,6000,1200,800,1000\n", tmp_path, capsys, header)
+    assert "INVALID FILE: missing columns: fuel_flow_kg_h" in output
+    assert "FLT001" not in output
+    assert output.splitlines()[-1] == "Prototype"
+
+
+def test_fr05_renamed_column_gives_clear_error(tmp_path, capsys):
+    header = HEADER.replace("fuel_kg", "fuel_lb")
+    output = run_csv("FLT001,Test,6000,2400,1200,800,1000\n", tmp_path, capsys, header)
+    assert "INVALID FILE: missing columns: fuel_kg" in output
+    assert "FLT001" not in output
+    assert output.splitlines()[-1] == "Prototype"

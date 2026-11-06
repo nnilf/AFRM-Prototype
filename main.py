@@ -17,6 +17,8 @@ WARNINGS = {
     "CAUTION": "Arrival fuel is less than 25% above protected fuel",
     "NORMAL": "-",
 }
+REQUIRED_COLUMNS = ["flight", "fuel_kg", "fuel_flow_kg_h", "distance_km",
+                    "groundspeed_kmh", "protected_kg"]
 
 
 def print_disclaimer():
@@ -43,13 +45,23 @@ def print_flight(row):
           f"{endurance:>10.2f}{available_range:>10.0f}  {status:<10}{WARNINGS[status]}")
 
 
+def missing_columns(reader, required):
+    found = reader.fieldnames or []
+    return [name for name in required if name not in found]
+
+
 def run(csv_path):
     print_disclaimer()
     print(f"{'Flight':<8}{'Time h':>8}{'Arrival kg':>12}{'Margin kg':>11}"
           f"{'Endur. h':>10}{'Range km':>10}  {'Status':<10}Warning")
     with open(csv_path, newline="") as file:
-        for row in csv.DictReader(file):
-            print_flight(row)
+        reader = csv.DictReader(file)
+        missing = missing_columns(reader, REQUIRED_COLUMNS)
+        if missing:
+            print(f"INVALID FILE: missing columns: {', '.join(missing)}")
+        else:
+            for row in reader:
+                print_flight(row)
     print()
     print_disclaimer()
 
