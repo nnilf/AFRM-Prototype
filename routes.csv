@@ -1,0 +1,6 @@
+flight,distance_km,groundspeed_kmh,fuel_flow_kg_h
+FLT009,240,600,3000
+FLT009,600,800,2400
+FLT012,300,600,3000
+FLT012,992,800,2200
+FLT012,180,450,1500
