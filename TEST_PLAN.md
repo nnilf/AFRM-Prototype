@@ -62,6 +62,7 @@ The Hypothesis seed is fixed so the same inputs are generated each time.
 
 ```powershell
 python -m ruff check .
-python -m pytest -v --hypothesis-seed=42
+python -m pytest -v --cov --cov-report=term-missing --hypothesis-seed=42
 python benchmark.py
+python -m cProfile -s tottime benchmark.py
 ```

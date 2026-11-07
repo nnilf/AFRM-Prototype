@@ -1,0 +1,29 @@
+Commit: deaab54f7199e1b89e795a7f50ce65385c94d816
+Command: python benchmark.py
+
+   1000 flights  python  repeat 1  0.000497 s
+   1000 flights  numpy   repeat 1  0.000073 s
+   1000 flights  python  repeat 2  0.000491 s
+   1000 flights  numpy   repeat 2  0.000024 s
+   1000 flights  python  repeat 3  0.000488 s
+   1000 flights  numpy   repeat 3  0.000020 s
+   1000 flights  python  repeat 4  0.000499 s
+   1000 flights  numpy   repeat 4  0.000021 s
+   1000 flights  python  repeat 5  0.000494 s
+   1000 flights  numpy   repeat 5  0.000020 s
+ 100000 flights  python  repeat 1  0.046775 s
+ 100000 flights  numpy   repeat 1  0.002375 s
+ 100000 flights  python  repeat 2  0.047260 s
+ 100000 flights  numpy   repeat 2  0.002506 s
+ 100000 flights  python  repeat 3  0.046686 s
+ 100000 flights  numpy   repeat 3  0.002425 s
+ 100000 flights  python  repeat 4  0.047260 s
+ 100000 flights  numpy   repeat 4  0.002988 s
+ 100000 flights  python  repeat 5  0.047110 s
+ 100000 flights  numpy   repeat 5  0.002570 s
+
+   1000 flights  python  median 0.000494 s  st dev 0.000005 s
+   1000 flights  numpy   median 0.000021 s  st dev 0.000023 s
+ 100000 flights  python  median 0.047110 s  st dev 0.000272 s
+ 100000 flights  numpy   median 0.002506 s  st dev 0.000244 s
+Target median under 10 ms: PASS

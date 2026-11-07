@@ -1,0 +1,52 @@
+Environment for the baseline evidence
+
+Commit: deaab54f7199e1b89e795a7f50ce65385c94d816
+Based on tag: V1.0.0 (35d06451a305afb47b3a02e439672d1ba4edc389)
+Calculation files changed since V1.0.0: 0
+Hypothesis seed: 42
+Benchmark seed: 42
+Flight data: flights.csv from generate_flights.py, seed 42, simulated
+CI run ID:
+
+OS: Microsoft Windows 11 Pro 10.0.22000
+CPU: AMD Ryzen 7 2700X Eight-Core Processor, 8 cores, 16 threads
+RAM: 31.9 GB
+Python: Python 3.13.16
+
+pip freeze:
+boolean.py==5.0
+CacheControl==0.14.4
+certifi==2026.10.23
+charset-normalizer==3.5.2
+colorama==0.4.6
+coverage==7.17.2
+cyclonedx-python-lib==11.12.0
+defusedxml==0.7.1
+filelock==4.2.6
+hypothesis==6.170.2
+idna==3.20
+iniconfig==2.3.1
+license-expression==30.4.4
+markdown-it-py==4.2.0
+mdurl==0.1.2
+msgpack==1.2.4
+numpy==2.5.4
+packageurl-python==0.17.6
+packaging==26.3
+pip-requirements-parser==32.0.1
+pip_api==0.0.35
+pip_audit==2.10.1
+platformdirs==4.14.3
+pluggy==1.7.0
+py-serializable==2.1.0
+Pygments==2.21.0
+pyparsing==3.3.3
+pytest==9.1.1
+pytest-cov==7.1.0
+requests==2.34.2
+rich==15.0.0
+ruff==0.17.1
+sortedcontainers==2.4.0
+tomli==2.5.0
+tomli_w==1.2.0
+urllib3==2.8.0

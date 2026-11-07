@@ -1,0 +1,34 @@
+Commit: deaab54f7199e1b89e795a7f50ce65385c94d816
+Command: python -m cProfile -s tottime benchmark.py
+
+
+   1000 flights  python  median 0.001797 s  st dev 0.000166 s
+   1000 flights  numpy   median 0.000027 s  st dev 0.000024 s
+ 100000 flights  python  median 0.186469 s  st dev 0.002628 s
+ 100000 flights  numpy   median 0.002304 s  st dev 0.000738 s
+Target median under 10 ms: PASS
+         5314809 function calls (5312477 primitive calls) in 2.554 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       10    0.523    0.052    0.945    0.094 benchmark.py:20(run_python)
+   101000    0.396    0.000    1.265    0.000 generate_flights.py:22(make_flight)
+   202000    0.164    0.000    0.253    0.000 random.py:245(_randbelow_with_getrandbits)
+   505000    0.142    0.000    0.205    0.000 calculations.py:12(endurance_hours)
+   303000    0.137    0.000    0.193    0.000 random.py:498(uniform)
+   101000    0.116    0.000    0.270    0.000 random.py:295(randrange)
+   404000    0.107    0.000    0.107    0.000 {built-in method builtins.round}
+   505000    0.088    0.000    0.088    0.000 calculations.py:7(fuel_at_arrival)
+   101000    0.083    0.000    0.249    0.000 random.py:345(choice)
+        1    0.071    0.071    2.554    2.554 benchmark.py:1(<module>)
+   505000    0.065    0.000    0.065    0.000 calculations.py:18(range_km)
+   505228    0.064    0.000    0.064    0.000 {built-in method builtins.max}
+   505000    0.063    0.000    0.063    0.000 calculations.py:2(flight_time_hours)
+   303000    0.056    0.000    0.056    0.000 {method 'random' of '_random.Random' objects}
+      108    0.054    0.000    0.054    0.000 {built-in method _io.open_code}
+   350235    0.050    0.000    0.050    0.000 {method 'getrandbits' of '_random.Random' objects}
+   101000    0.049    0.000    0.319    0.000 random.py:336(randint)
+        2    0.048    0.024    0.048    0.024 {built-in method numpy.array}
+   202008    0.039    0.000    0.039    0.000 {method 'bit_length' of 'int' objects}
+   303000    0.039    0.000    0.039    0.000 {built-in method _operator.index}
