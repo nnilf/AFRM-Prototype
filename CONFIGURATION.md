@@ -13,6 +13,7 @@ This records which files are under version control, which versions can be recove
 | Sample data | `flights.csv`, `benchmark_results.csv` |
 | Pinned dependencies | `requirements.txt` |
 | Coverage and CI configuration | `.coveragerc`, `.github/workflows/tests.yml` |
+| Change control | `CR-001.md`, `REVIEW_CHECKLIST.md` |
 | Documentation | `README.md`, `CHANGELOG.md`, `CONFIGURATION.md` |
 
 ## Baselines
