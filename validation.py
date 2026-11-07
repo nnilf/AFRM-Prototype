@@ -26,3 +26,17 @@ def validate_inputs(fuel, fuel_flow, distance, groundspeed, protected):
         check_number("groundspeed", groundspeed, allow_zero=False),
         check_number("protected", protected, allow_zero=False),
     )
+
+
+# FR-06: check every segment of a route. Each value must be above zero.
+def validate_segments(segments):
+    if not segments:
+        raise ValueError("route must have at least one segment")
+    checked = []
+    for distance, groundspeed, fuel_flow in segments:
+        checked.append((
+            check_number("segment distance", distance, allow_zero=False),
+            check_number("segment groundspeed", groundspeed, allow_zero=False),
+            check_number("segment fuel_flow", fuel_flow, allow_zero=False),
+        ))
+    return checked
