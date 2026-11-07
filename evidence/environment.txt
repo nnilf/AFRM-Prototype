@@ -6,7 +6,7 @@ Calculation files changed since V1.0.0: 0
 Hypothesis seed: 42
 Benchmark seed: 42
 Flight data: flights.csv from generate_flights.py, seed 42, simulated
-CI run ID:
+CI run ID: 42300852815 (commit deaab54, passed)
 
 OS: Microsoft Windows 11 Pro 10.0.22000
 CPU: AMD Ryzen 7 2700X Eight-Core Processor, 8 cores, 16 threads
