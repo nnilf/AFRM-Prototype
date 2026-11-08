@@ -93,6 +93,12 @@ def test_cr001_route_distance_must_match(tmp_path, capsys):
     assert "NORMAL" in flight_line(output, "FLT002")
 
 
+def test_cr001_rejected_route_not_listed_as_used(tmp_path, capsys):
+    # FLT001's route is too short, FLT002's single segment matches its 1200 km
+    output = run_with_routes("FLT001,400,800,2400\nFLT002,1200,800,2400\n", tmp_path, capsys)
+    assert "Route used for: FLT002" in output.splitlines()
+
+
 def test_cr001_cli_uses_route(tmp_path, capsys):
     output = run_with_routes("FLT001,400,800,2400\nFLT001,600,600,3000\n", tmp_path, capsys)
     # Route: 1.5 h, 6000 - 4200 = 1800 kg, margin 300. Endurance stays (6000 - 1500) / 2400

@@ -55,6 +55,7 @@ def print_flight(row, segments=None):
 
     print(f"{row['flight']:<8}{flight_time:>8.2f}{arrival:>12.0f}{margin:>11.0f}"
           f"{endurance:>10.2f}{available_range:>10.0f}  {status:<10}{WARNINGS[status]}")
+    return bool(segments)
 
 
 def missing_columns(reader, required):
@@ -78,7 +79,7 @@ def load_routes(routes_path):
     return routes
 
 
-# Prints one line per flight and returns the flights that had a route
+# Prints one line per flight and returns the flights whose route was used
 def print_flights(csv_path, routes_path):
     routes = {}
     if routes_path:
@@ -90,9 +91,8 @@ def print_flights(csv_path, routes_path):
         if missing:
             raise ValueError(f"missing columns: {', '.join(missing)}")
         for row in reader:
-            if row["flight"] in routes:
+            if print_flight(row, routes.get(row["flight"])):
                 with_route.append(row["flight"])
-            print_flight(row, routes.get(row["flight"]))
     return with_route
 
 
