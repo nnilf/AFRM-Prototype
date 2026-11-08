@@ -14,6 +14,11 @@ CR-001: multi-segment routes. The tag and date are added on release.
 - `CR-001.md` and `REVIEW_CHECKLIST.md`
 - Fixed Hypothesis seed in CI
 
+### Fixed
+
+- Review finding: "Route used for" listed flights whose route had been rejected. It now only lists routes that were used.
+- Review finding: the error for a routes file with a missing column had no test. It now has one.
+
 ### Unchanged
 
 - Plain `python main.py` output is byte-identical to `V1.0.1`.

@@ -54,6 +54,13 @@ The challenge test led to CR-001, which adds multi-segment routes as FR-06. I wr
 | `test_cr001_route_distance_must_match` | CSV through `main.py` | A route that doesn't add up to the flight's distance prints `INVALID` |
 | `test_cr001_cli_uses_route` | CSV through `main.py` | Flights with a route use it, and flights without one keep the original result |
 
+The review of CR-001 found two gaps, so I added two more tests afterwards:
+
+| Test | Method | Pass if |
+|---|---|---|
+| `test_cr001_rejected_route_not_listed_as_used` | CSV through `main.py` | A flight whose route is rejected is not listed under "Route used for" |
+| `test_fr05_routes_file_missing_column_gives_clear_error` | CSV through `main.py` | A routes file with a missing column prints a clear error and the disclaimer, instead of crashing |
+
 ## Targets
 
 - **Performance:** NumPy must process 100,000 flights in a median under 10 ms over 5 repeats. Assignment 1 measured a median of 3.26 ms, so this leaves room for normal variation. CR-001 adds the same target for 100,000 three-segment routes.

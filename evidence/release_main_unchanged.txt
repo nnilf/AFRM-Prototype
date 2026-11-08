@@ -1,4 +1,4 @@
-Release commit: cecb6906d1346edac2d4248a112dca4c2f2161d0
+Release commit: 0490411557fdff88778f4fb00c8349a2d0605a2b plus the CR-001 review fixes to main.py, test_main.py and test_route.py (uncommitted when recorded)
 Baseline: V1.0.1 (8aa72ace49d481659272f1ba8424d17bf338f42d)
 Command: python main.py, run on each version, compared byte for byte
 

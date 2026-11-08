@@ -2,27 +2,26 @@
 
 | | Baseline | Release candidate |
 |---|---|---|
-| Version | `V1.0.1` (`8aa72ac`), evidence recorded at `deaab54` | `cecb690` on `cr-001-route-segments` |
-| CI run | `42300852815`, passed | `42490799450`, passed, 49 tests, seed 42 |
+| Version | `V1.0.1` (`8aa72ac`), evidence recorded at `deaab54` | `cr-001-route-segments`, with the two review fixes |
+| CI run | `42300852815`, passed | `42490799450` on `cecb690`, passed, 49 tests, seed 42 (before the review fixes) |
 
 Both were run on the same machine with Python 3.13.16 and the same pinned packages (`requirements.txt` has not changed since `V1.0.1`). See `environment.txt`.
+
+The review found two small problems, which I fixed before merging. I then re-recorded `release_tests.txt` and `release_main_unchanged.txt`. The benchmark, routes output and `pip-audit` results were recorded at `cecb690`. The fixes only changed `main.py` and the tests, so they don't affect those results, and the routes output was checked again and is the same.
 
 ## Tests and coverage
 
 | | Baseline | Release |
 |---|---|---|
-| Tests | 41 passed, 0 failed | 49 passed, 0 failed |
-| Original tests changed | | None. `git diff V1.0.1` on the original test files is empty |
+| Tests | 41 passed, 0 failed | 51 passed, 0 failed |
+| Original tests changed | | None. The 41 original tests are unchanged, and one new test was added to `test_main.py` |
 | Requirements with automated tests | 5/5 (FR-01 to FR-05) | 6/6 (FR-01 to FR-06) |
-| Statement coverage | 78/79 (98.7%) | 131/134 (97.8%) |
-| Branch coverage | 15/16 (93.8%) | 38/40 (95.0%) |
+| Statement coverage | 78/79 (98.7%) | 132/134 (98.5%) |
+| Branch coverage | 15/16 (93.8%) | 39/40 (97.5%) |
 | Calculation modules | 100% | 100% |
-| `main.py` | 96% | 95% |
+| `main.py` | 96% | 97% |
 
-All the coverage targets in `TEST_PLAN.md` are still met. The lines not covered in `main.py` are:
-
-- Line 72, the error for a routes file with a missing column. I checked it by hand, but no automated test covers it.
-- Lines 115 to 116, which only run when `main.py` is started as a script.
+All the coverage targets in `TEST_PLAN.md` are still met. The only lines not covered are 115 to 116 in `main.py`, which only run when it is started as a script.
 
 ## Expected vs observed
 
@@ -38,6 +37,8 @@ Expected values were worked out by hand before the code was written.
 | NumPy routes | 800 and 1800 kg, and matches Python within 0.000001 | Pass |
 | Route that doesn't match the flight distance | `INVALID` | Pass |
 | Command line with a route | 1.50 h, 1800 kg, margin 300, CAUTION, endurance 1.88 h | Pass |
+| Rejected route (review fix) | Not listed in "Route used for" | Pass |
+| Routes file with a missing column (review fix) | Clear error and closing disclaimer, no crash | Pass |
 | `routes.csv` FLT009 | 1.15 h, burn 3000 kg, arrival 2153 kg | 1.15 h, 2153 kg (`release_routes_output.txt`) |
 | `routes.csv` FLT012 | 2.14 h, burn 4828 kg, arrival 1211 kg | 2.14 h, 1211 kg (`release_routes_output.txt`) |
 | `python main.py` without routes | Byte-identical to `V1.0.1` | Identical, same SHA-256 (`release_main_unchanged.txt`) |
