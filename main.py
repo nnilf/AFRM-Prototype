@@ -62,7 +62,7 @@ def missing_columns(reader, required):
     return [name for name in required if name not in found]
 
 
-# Returns each flight's segments in file order, e.g. {"FLT001": [(distance, speed, flow), ...]}
+# Returns each flight's segments in file order
 def load_routes(routes_path):
     routes = {}
     with open(routes_path, newline="") as file:
