@@ -54,6 +54,18 @@ def test_fr05_missing_column_gives_clear_error(tmp_path, capsys):
     assert output.splitlines()[-1] == "Prototype"
 
 
+def test_fr05_routes_file_missing_column_gives_clear_error(tmp_path, capsys):
+    flights = tmp_path / "flights.csv"
+    flights.write_text(HEADER + "FLT001,Test,6000,2400,1200,800,1000\n")
+    routes = tmp_path / "routes.csv"
+    routes.write_text("flight,distance_km,speed,fuel_flow_kg_h\nFLT001,1200,800,2400\n")
+    main.run(flights, routes)
+    output = capsys.readouterr().out
+    assert "INVALID FILE: routes file is missing columns: groundspeed_kmh" in output
+    assert "FLT001" not in output
+    assert output.splitlines()[-1] == "Prototype"
+
+
 def test_fr05_renamed_column_gives_clear_error(tmp_path, capsys):
     header = HEADER.replace("fuel_kg", "fuel_lb")
     output = run_csv("FLT001,Test,6000,2400,1200,800,1000\n", tmp_path, capsys, header)
