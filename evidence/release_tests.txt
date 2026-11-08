@@ -1,0 +1,75 @@
+Commit: cecb6906d1346edac2d4248a112dca4c2f2161d0
+Command: python -m ruff check . ; python -m pytest -v --cov --cov-report=term-missing --hypothesis-seed=42
+
+All checks passed!
+
+============================= test session starts =============================
+platform win32 -- Python 3.13.16, pytest-9.1.1, pluggy-1.7.0 -- C:\Development\AFRM-Prototype\.venv\Scripts\python.exe
+hypothesis profile 'default'
+rootdir: C:\Development\AFRM-Prototype
+plugins: hypothesis-6.170.2, platformdirs-4.14.3, cov-7.1.0
+collecting ... collected 49 items
+
+test_batch.py::test_fr02_fr03_numpy_matches_plain_python PASSED          [  2%]
+test_batch.py::test_fr02_fr03_numpy_matches_hand_values PASSED           [  4%]
+test_batch.py::test_fr02_fr03_numpy_matches_python_for_any_flight PASSED [  6%]
+test_calculations.py::test_fr02_flight_time PASSED                       [  8%]
+test_calculations.py::test_fr02_fuel_at_arrival PASSED                   [ 10%]
+test_calculations.py::test_fr02_zero_distance_keeps_all_fuel PASSED      [ 12%]
+test_calculations.py::test_fr02_arrival_exactly_zero PASSED              [ 14%]
+test_calculations.py::test_fr03_endurance_and_range PASSED               [ 16%]
+test_calculations.py::test_fr03_no_usable_fuel_below_protected PASSED    [ 18%]
+test_calculations.py::test_fr03_fuel_equal_to_protected_gives_zero PASSED [ 20%]
+test_calculations.py::test_fr04_reserve_margin PASSED                    [ 22%]
+test_challenge.py::test_challenge_leg_by_leg_matches_hand_value PASSED   [ 24%]
+test_challenge.py::test_challenge_simple_average_changes_status PASSED   [ 26%]
+test_challenge.py::test_challenge_weighted_average_matches_hand_value PASSED [ 28%]
+test_main.py::test_fr05_critical_warning PASSED                          [ 30%]
+test_main.py::test_fr05_caution_warning PASSED                           [ 32%]
+test_main.py::test_fr05_normal_has_no_warning PASSED                     [ 34%]
+test_main.py::test_fr05_invalid_row_does_not_stop_later_rows PASSED      [ 36%]
+test_main.py::test_fr05_disclaimer_before_and_after_table PASSED         [ 38%]
+test_main.py::test_fr05_missing_column_gives_clear_error PASSED          [ 40%]
+test_main.py::test_fr05_renamed_column_gives_clear_error PASSED          [ 42%]
+test_properties.py::test_fr03_more_fuel_flow_never_increases_range PASSED [ 44%]
+test_properties.py::test_fr02_arrival_fuel_never_more_than_current_fuel PASSED [ 46%]
+test_properties.py::test_fr03_endurance_never_negative PASSED            [ 48%]
+test_properties.py::test_fr04_status_is_always_one_of_three PASSED       [ 51%]
+test_route.py::test_cr001_single_segment_matches_baseline PASSED         [ 53%]
+test_route.py::test_cr001_two_segments_matches_hand_values PASSED        [ 55%]
+test_route.py::test_cr001_three_segments_matches_hand_values PASSED      [ 57%]
+test_route.py::test_cr001_invalid_segments_rejected PASSED               [ 59%]
+test_route.py::test_cr001_segment_status_correct PASSED                  [ 61%]
+test_route.py::test_cr001_numpy_matches_python PASSED                    [ 63%]
+test_route.py::test_cr001_route_distance_must_match PASSED               [ 65%]
+test_route.py::test_cr001_cli_uses_route PASSED                          [ 67%]
+test_status.py::test_fr04_just_below_1_00_is_critical PASSED             [ 69%]
+test_status.py::test_fr04_exactly_1_00_is_caution PASSED                 [ 71%]
+test_status.py::test_fr04_just_below_1_25_is_caution PASSED              [ 73%]
+test_status.py::test_fr04_exactly_1_25_is_normal PASSED                  [ 75%]
+test_status.py::test_fr04_negative_arrival_fuel_is_critical PASSED       [ 77%]
+test_validation.py::test_fr01_accepts_valid_inputs PASSED                [ 79%]
+test_validation.py::test_fr01_rejects_negative PASSED                    [ 81%]
+test_validation.py::test_fr01_rejects_zero_fuel_flow PASSED              [ 83%]
+test_validation.py::test_fr01_rejects_zero_groundspeed PASSED            [ 85%]
+test_validation.py::test_fr01_rejects_zero_protected PASSED              [ 87%]
+test_validation.py::test_fr01_rejects_non_numeric PASSED                 [ 89%]
+test_validation.py::test_fr01_rejects_nan PASSED                         [ 91%]
+test_validation.py::test_fr01_rejects_infinity PASSED                    [ 93%]
+test_validation.py::test_fr01_rejects_blank PASSED                       [ 95%]
+test_validation.py::test_fr01_rejects_none PASSED                        [ 97%]
+test_validation.py::test_fr01_rejects_negative_infinity PASSED           [100%]
+
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.13.16-final-0 _______________
+
+Name                    Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------
+batch_calculations.py      10      0      0      0   100%
+calculations.py            19      0      2      0   100%
+main.py                    76      3     24      2    95%   72, 115-116
+status.py                   7      0      4      0   100%
+validation.py              22      0     10      0   100%
+-------------------------------------------------------------------
+TOTAL                     134      3     40      2    97%
+============================= 49 passed in 2.94s ==============================

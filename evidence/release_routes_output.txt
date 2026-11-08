@@ -1,0 +1,58 @@
+Commit: cecb6906d1346edac2d4248a112dca4c2f2161d0
+Command: python main.py routes.csv
+
+Prototype
+Flight    Time h  Arrival kg  Margin kg  Endur. h  Range km  Status    Warning
+FLT001      1.21         434        -42      1.15       527  CRITICAL  Arrival fuel is below protected fuel
+FLT002      0.49         692        148      0.69       395  NORMAL    -
+FLT003      2.53         610        134      2.74      1229  NORMAL    -
+FLT004      1.18        1298        -32      1.16       944  CRITICAL  Arrival fuel is below protected fuel
+FLT005      0.57        2705        714      0.84       625  NORMAL    -
+FLT006      1.01        1580       -212      0.92       720  CRITICAL  Arrival fuel is below protected fuel
+FLT007      1.40        4534         52      1.41      1344  CAUTION   Arrival fuel is less than 25% above protected fuel
+FLT008      1.73         474        -75      1.62       823  CRITICAL  Arrival fuel is below protected fuel
+FLT009      1.15        2153        154      1.18      1007  CAUTION   Arrival fuel is less than 25% above protected fuel
+FLT010      1.53         757        280      1.97       891  NORMAL    -
+FLT011      1.36        1791        422      1.59      1203  NORMAL    -
+FLT012      2.14        1211       -537      1.84      1480  CRITICAL  Arrival fuel is below protected fuel
+FLT013      1.36         499        -37      1.31       578  CRITICAL  Arrival fuel is below protected fuel
+FLT014      1.28        4538       -113      1.26      1222  CRITICAL  Arrival fuel is below protected fuel
+FLT015      0.65        2919        916      0.99       871  NORMAL    -
+FLT016      1.68        2759        921      2.05      1544  NORMAL    -
+FLT017      1.71        2063        296      1.83      1520  CAUTION   Arrival fuel is less than 25% above protected fuel
+FLT018      1.38        1758         18      1.38      1210  CAUTION   Arrival fuel is less than 25% above protected fuel
+FLT019      0.63        8409       3146      1.08       940  NORMAL    -
+FLT020      0.28        1901        624      0.64       455  NORMAL    -
+FLT021      1.16        1669        362      1.36      1137  NORMAL    -
+FLT022      1.21        4766          6      1.21      1184  CAUTION   Arrival fuel is less than 25% above protected fuel
+FLT023      2.78         762        218      3.08      1329  NORMAL    -
+FLT024      1.26        1388       -342      1.11       908  CRITICAL  Arrival fuel is below protected fuel
+FLT025      1.30        3140       1088      1.70      1488  NORMAL    -
+FLT026      0.61        1847       -156      0.55       459  CRITICAL  Arrival fuel is below protected fuel
+FLT027      1.43        1972        687      1.83      1519  NORMAL    -
+FLT028      1.11        2811        941      1.49      1130  NORMAL    -
+FLT029      1.61        2769        991      2.03      1588  NORMAL    -
+FLT030      2.14         775        226      2.45      1362  NORMAL    -
+FLT031      0.51        1332         16      0.52       446  CAUTION   Arrival fuel is less than 25% above protected fuel
+FLT032      0.53        7301       1973      0.81       780  NORMAL    -
+FLT033      1.09        8143       2785      1.48      1354  NORMAL    -
+FLT034      0.94        3680       -825      0.81       677  CRITICAL  Arrival fuel is below protected fuel
+FLT035      2.01        1100       -198      1.90      1313  CRITICAL  Arrival fuel is below protected fuel
+FLT036      0.43         688        120      0.59       334  CAUTION   Arrival fuel is less than 25% above protected fuel
+FLT037      0.47        2672        734      0.76       591  NORMAL    -
+FLT038      1.05        4404       -220      1.02       901  CRITICAL  Arrival fuel is below protected fuel
+FLT039      1.99         636         94      2.11      1002  CAUTION   Arrival fuel is less than 25% above protected fuel
+FLT040      0.51         461        -82      0.40       234  CRITICAL  Arrival fuel is below protected fuel
+FLT041      0.65        1892        -96      0.61       465  CRITICAL  Arrival fuel is below protected fuel
+FLT042      1.26        4523         -1      1.26      1047  CRITICAL  Arrival fuel is below protected fuel
+FLT043      2.17         456        -63      2.08      1176  CRITICAL  Arrival fuel is below protected fuel
+FLT044      1.01         536        -38      0.96       555  CRITICAL  Arrival fuel is below protected fuel
+FLT045      0.23        4526       -331      0.18       171  CRITICAL  Arrival fuel is below protected fuel
+FLT046      2.25         592         16      2.27      1041  CAUTION   Arrival fuel is less than 25% above protected fuel
+FLT047      0.26        5733       1195      0.45       388  NORMAL    -
+FLT048      3.09         651        100      3.22      1353  CAUTION   Arrival fuel is less than 25% above protected fuel
+FLT049      0.61         993       -169      0.51       395  CRITICAL  Arrival fuel is below protected fuel
+FLT050      0.76         845        301      1.18       532  NORMAL    -
+
+Route used for: FLT009, FLT012
+Prototype
