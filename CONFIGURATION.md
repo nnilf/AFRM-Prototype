@@ -22,22 +22,26 @@ This records which files are under version control, which versions can be recove
 |---|---|---|---|
 | `V1.0.0` | `35d06451a305afb47b3a02e439672d1ba4edc389` | Assignment 1 prototype | `41910393157`, passed |
 | `V1.0.1` | `8aa72ace49d481659272f1ba8424d17bf338f42d` | Tested baseline with the same calculations, new tests and the DEF-001 fix | `42356813449`, passed |
+| `V1.1.0` | `305326b4eab42751af6e1b6ea53f931631e31955` | CR-001 multi-segment routes (FR-06), merged from pull request [#1](https://github.com/nnilf/AFRM-Prototype/pull/1) | `42522790978`, passed |
 
 The evidence in `evidence/` was recorded on commit `deaab54f7199e1b89e795a7f50ce65385c94d816`, CI run `42300852815`, which passed. `V1.0.1` is the next commit, which only added that evidence and the updated run commands.
 
 To recover a baseline and repeat its tests:
 
 ```powershell
-git switch --detach V1.0.1
+git switch --detach V1.1.0
 python -m pip install -r requirements.txt
 python -m pytest -v --cov --cov-report=term-missing --hypothesis-seed=42
 ```
+
+Replace `V1.1.0` with any tag above to recover that version.
 
 ## Change controls
 
 - Each change is a small commit, and GitHub Actions runs Ruff and all the tests on every push.
 - Algorithm changes need a written change request, a branch and a pull request before merging.
 - Each baseline or release gets a tag and an entry in `CHANGELOG.md`.
+- CR-001 followed this process: `CR-001.md`, the `cr-001-route-segments` branch, tests committed before the code, `REVIEW_CHECKLIST.md`, then pull request #1 merged with a merge commit and tagged `V1.1.0`.
 
 ## Limitations
 

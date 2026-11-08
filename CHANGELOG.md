@@ -1,8 +1,16 @@
 # Changelog
 
-## Unreleased (planned V1.1.0)
+## V1.1.0 - 2026-11-08
 
-CR-001: multi-segment routes. The tag and date are added on release.
+CR-001: multi-segment routes.
+
+| | |
+|---|---|
+| Tag | `V1.1.0` |
+| Commit | `305326b4eab42751af6e1b6ea53f931631e31955` (merge commit) |
+| Pull request | [#1](https://github.com/nnilf/AFRM-Prototype/pull/1), merged with a merge commit |
+| CI | Pull request run `42522673393` and `main` run `42522790978`, both passed with 51 tests |
+| Review | `REVIEW_CHECKLIST.md`, accepted with limitations |
 
 ### Added
 
