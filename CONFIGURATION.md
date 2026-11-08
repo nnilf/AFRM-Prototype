@@ -10,7 +10,7 @@ This records which files are under version control, which versions can be recove
 | Tools | `generate_flights.py`, `benchmark.py` |
 | Tests | `test_*.py` |
 | Test plan and evidence | `TEST_PLAN.md`, `evidence/` |
-| Sample data | `flights.csv`, `benchmark_results.csv` |
+| Sample data | `flights.csv`, `routes.csv`, `benchmark_results.csv` |
 | Pinned dependencies | `requirements.txt` |
 | Coverage and CI configuration | `.coveragerc`, `.github/workflows/tests.yml` |
 | Change control | `CR-001.md`, `REVIEW_CHECKLIST.md` |

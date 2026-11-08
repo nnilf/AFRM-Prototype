@@ -1,5 +1,24 @@
 # Changelog
 
+## Unreleased (planned V1.1.0)
+
+CR-001: multi-segment routes. The tag and date are added on release.
+
+### Added
+
+- FR-06: a flight can have a route of segments, each with its own distance, groundspeed and fuel flow
+- `validate_segments`, `route_time_and_burn` and `calculate_route_batch`
+- `python main.py routes.csv`, with a sample `routes.csv`
+- CR-001 acceptance tests in `test_route.py`, written before the route code
+- Route timings for 1, 3 and 5 segments in `benchmark.py`
+- `CR-001.md` and `REVIEW_CHECKLIST.md`
+- Fixed Hypothesis seed in CI
+
+### Unchanged
+
+- Plain `python main.py` output is byte-identical to `V1.0.1`.
+- The existing calculation functions, status thresholds, and the meaning of endurance and range.
+
 ## V1.0.1 - 2026-11-07
 
 The calculations are the same as `V1.0.0`.
