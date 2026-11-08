@@ -22,7 +22,7 @@ Reviewed against `git diff V1.0.1 0490411`: 7 code and data files, 250 lines add
 | 12 | Coverage targets in `TEST_PLAN.md` are still met | Pass | Calculation modules 100%, `main.py` 95%. Line 72, the error for a routes file with a missing column, has no automated test | Fixed in `4141291`. `main.py` is now 97% |
 | 13 | Performance targets are met | Pass | NumPy medians: 2.918 ms for flights, 4.272 ms for 3-segment routes, both under 10 ms (`evidence/comparison.md`) | None |
 | 14 | FR-06 is documented in `README.md`, `TEST_PLAN.md` and `CHANGELOG.md` | Pass | All three updated in `cecb690` | Updated again for the fixes in `96aebcd` |
-| 15 | The code is simple and readable, with no unneeded comments | | Each new function is under 20 lines and reuses existing functions. `print_flight` reuses the name `segments` for the checked values | |
+| 15 | The code is simple and readable, with no unneeded comments | Pass | Each new function is under 20 lines and reuses existing functions. `print_flight` reuses the name `segments` for the checked values | None |
 | 16 | CI passes on the branch | Pass | Latest run `42511439668` on `0490411` passed | The fix commits must also pass CI on the pull request before merging |
 
 **Result** is Pass or Fail. **Action** is what I did about each finding.
