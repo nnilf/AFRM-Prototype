@@ -1,0 +1,7 @@
+Release commit: 0490411557fdff88778f4fb00c8349a2d0605a2b plus the CR-001 review fixes to main.py, test_main.py and test_route.py (uncommitted when recorded)
+Baseline: V1.0.1 (8aa72ace49d481659272f1ba8424d17bf338f42d)
+Command: python main.py, run on each version, compared byte for byte
+
+SHA-256 of V1.0.1 output: 0e68236363d8a5a8f5fe6a23e37655d0d646b21f0b2c14cc4afd7ea9016a231b
+SHA-256 of release output: 0e68236363d8a5a8f5fe6a23e37655d0d646b21f0b2c14cc4afd7ea9016a231b
+Result: identical

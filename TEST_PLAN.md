@@ -17,6 +17,8 @@ I ranked each failure by how misleading it would be. A result that looks safe wh
 | Wrong CSV units | Numbers are wrong but look fine | High | Can't be tested from the values, see Limitations |
 | Python and NumPy disagree | Two different answers for one flight | High | Compare both, plus hand-worked answers |
 | Missing or unclear warning | A low fuel state could be missed or misread | High | Output tests through `main.py` |
+| Wrong route total (FR-06) | Arrival fuel too high on a multi-segment flight | High | Hand-worked 2- and 3-segment routes, NumPy comparison |
+| Route doesn't match the flight (FR-06) | Results for a different journey look real | High | Distance check through `main.py` |
 | False CRITICAL or CAUTION | Too cautious, but it would get checked | Medium | Boundary tests |
 | Slow batch calculations | Inconvenient, but the results are still right | Low | Benchmark |
 
@@ -38,10 +40,31 @@ While planning these tests I found a real defect, DEF-001. A CSV with a missing 
 
 I also plan one challenge test, `test_challenge.py`, which runs a two-leg route with different speeds and fuel flows. I chose it on purpose to test the constant speed and fuel flow assumption, so it shows a limit of the model and not a bug.
 
+## CR-001 tests (FR-06)
+
+The challenge test led to CR-001, which adds multi-segment routes as FR-06. I wrote these acceptance tests in `test_route.py` after the change was approved and before any route code existed, so they all failed at first.
+
+| Test | Method | Pass if |
+|---|---|---|
+| `test_cr001_single_segment_matches_baseline` | Comparison with `V1.0.1` | One segment gives the same arrival fuel as the original calculation |
+| `test_cr001_two_segments_matches_hand_values`, `test_cr001_three_segments_matches_hand_values` | Known answers | Time and burn match my hand calculations |
+| `test_cr001_invalid_segments_rejected` | Invalid inputs | An empty route, or a zero, negative or non-numeric value, raises `ValueError` |
+| `test_cr001_segment_status_correct` | Boundary values | Route arrival fuel gives CRITICAL, CAUTION and NORMAL at the right points |
+| `test_cr001_numpy_matches_python` | Known answers and comparison | NumPy matches the hand values, and Python to within 0.000001 |
+| `test_cr001_route_distance_must_match` | CSV through `main.py` | A route that doesn't add up to the flight's distance prints `INVALID` |
+| `test_cr001_cli_uses_route` | CSV through `main.py` | Flights with a route use it, and flights without one keep the original result |
+
+The review of CR-001 found two gaps, so I added two more tests afterwards:
+
+| Test | Method | Pass if |
+|---|---|---|
+| `test_cr001_rejected_route_not_listed_as_used` | CSV through `main.py` | A flight whose route is rejected is not listed under "Route used for" |
+| `test_fr05_routes_file_missing_column_gives_clear_error` | CSV through `main.py` | A routes file with a missing column prints a clear error and the disclaimer, instead of crashing |
+
 ## Targets
 
-- **Performance:** NumPy must process 100,000 flights in a median under 10 ms over 5 repeats. Assignment 1 measured a median of 3.26 ms, so this leaves room for normal variation.
-- **Requirements coverage:** FR-01 to FR-05 all have at least one automated test.
+- **Performance:** NumPy must process 100,000 flights in a median under 10 ms over 5 repeats. Assignment 1 measured a median of 3.26 ms, so this leaves room for normal variation. CR-001 adds the same target for 100,000 three-segment routes.
+- **Requirements coverage:** FR-01 to FR-06 all have at least one automated test.
 - **Code coverage:** 100% statement and branch for `validation.py`, `calculations.py`, `status.py` and `batch_calculations.py`, and at least 90% for `main.py`, which mostly handles input and output. `benchmark.py` and `generate_flights.py` are left out because they are tools and not part of the requirements.
 
 ## When testing starts and finishes
@@ -63,6 +86,7 @@ The Hypothesis seed is fixed so the same inputs are generated each time.
 ```powershell
 python -m ruff check .
 python -m pytest -v --cov --cov-report=term-missing --hypothesis-seed=42
+python main.py routes.csv
 python benchmark.py
 python -m cProfile -s tottime benchmark.py
 ```

@@ -1,0 +1,66 @@
+Commit: cecb6906d1346edac2d4248a112dca4c2f2161d0
+Command: python benchmark.py
+
+   1000 flights  python  repeat 1  0.000454 s
+   1000 flights  numpy   repeat 1  0.000067 s
+   1000 flights  python  repeat 2  0.000456 s
+   1000 flights  numpy   repeat 2  0.000022 s
+   1000 flights  python  repeat 3  0.000452 s
+   1000 flights  numpy   repeat 3  0.000019 s
+   1000 flights  python  repeat 4  0.000464 s
+   1000 flights  numpy   repeat 4  0.000019 s
+   1000 flights  python  repeat 5  0.000461 s
+   1000 flights  numpy   repeat 5  0.000018 s
+ 100000 flights  python  repeat 1  0.046453 s
+ 100000 flights  numpy   repeat 1  0.003483 s
+ 100000 flights  python  repeat 2  0.048249 s
+ 100000 flights  numpy   repeat 2  0.003063 s
+ 100000 flights  python  repeat 3  0.046183 s
+ 100000 flights  numpy   repeat 3  0.002504 s
+ 100000 flights  python  repeat 4  0.047345 s
+ 100000 flights  numpy   repeat 4  0.002918 s
+ 100000 flights  python  repeat 5  0.046838 s
+ 100000 flights  numpy   repeat 5  0.002816 s
+ 100000 flights  python_route_1 repeat 1  0.035959 s
+ 100000 flights  numpy_route_1 repeat 1  0.001322 s
+ 100000 flights  python_route_1 repeat 2  0.034277 s
+ 100000 flights  numpy_route_1 repeat 2  0.000984 s
+ 100000 flights  python_route_1 repeat 3  0.034529 s
+ 100000 flights  numpy_route_1 repeat 3  0.001037 s
+ 100000 flights  python_route_1 repeat 4  0.034513 s
+ 100000 flights  numpy_route_1 repeat 4  0.000970 s
+ 100000 flights  python_route_1 repeat 5  0.034781 s
+ 100000 flights  numpy_route_1 repeat 5  0.001051 s
+ 100000 flights  python_route_3 repeat 1  0.077374 s
+ 100000 flights  numpy_route_3 repeat 1  0.006125 s
+ 100000 flights  python_route_3 repeat 2  0.066309 s
+ 100000 flights  numpy_route_3 repeat 2  0.004135 s
+ 100000 flights  python_route_3 repeat 3  0.062422 s
+ 100000 flights  numpy_route_3 repeat 3  0.004455 s
+ 100000 flights  python_route_3 repeat 4  0.064395 s
+ 100000 flights  numpy_route_3 repeat 4  0.004252 s
+ 100000 flights  python_route_3 repeat 5  0.062877 s
+ 100000 flights  numpy_route_3 repeat 5  0.004272 s
+ 100000 flights  python_route_5 repeat 1  0.086531 s
+ 100000 flights  numpy_route_5 repeat 1  0.004749 s
+ 100000 flights  python_route_5 repeat 2  0.087154 s
+ 100000 flights  numpy_route_5 repeat 2  0.004837 s
+ 100000 flights  python_route_5 repeat 3  0.086484 s
+ 100000 flights  numpy_route_5 repeat 3  0.004681 s
+ 100000 flights  python_route_5 repeat 4  0.090140 s
+ 100000 flights  numpy_route_5 repeat 4  0.004694 s
+ 100000 flights  python_route_5 repeat 5  0.086317 s
+ 100000 flights  numpy_route_5 repeat 5  0.004779 s
+
+   1000 flights  python  median 0.000456 s  st dev 0.000005 s
+   1000 flights  numpy   median 0.000019 s  st dev 0.000021 s
+ 100000 flights  python  median 0.046838 s  st dev 0.000817 s
+ 100000 flights  numpy   median 0.002918 s  st dev 0.000359 s
+Target median under 10 ms: PASS
+ 100000 flights  python_route_1 median 0.034529 s  st dev 0.000666 s
+ 100000 flights  numpy_route_1 median 0.001037 s  st dev 0.000143 s
+ 100000 flights  python_route_3 median 0.064395 s  st dev 0.006171 s
+ 100000 flights  numpy_route_3 median 0.004272 s  st dev 0.000834 s
+Target median under 10 ms: PASS
+ 100000 flights  python_route_5 median 0.086531 s  st dev 0.001605 s
+ 100000 flights  numpy_route_5 median 0.004749 s  st dev 0.000064 s
