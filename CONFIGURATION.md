@@ -1,3 +1,5 @@
+> AI (Claude) was used to format this document.
+
 # Configuration Register
 
 This records which files are under version control, which versions can be recovered, and how changes are controlled in this solo project.

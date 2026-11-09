@@ -1,3 +1,5 @@
+> AI (Claude) was used to format this document.
+
 # Test Plan
 
 This plan tests the AFRM baseline (tag `V1.0.0`). I wrote it before adding any new tests so that the pass criteria were decided before I saw the results.

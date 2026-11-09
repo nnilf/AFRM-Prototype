@@ -1,3 +1,5 @@
+> AI (Claude) was used to format this document.
+
 # CR-001 Review Checklist
 
 I wrote this checklist before implementing CR-001, so the review is judged against points decided in advance. I will complete it against the final diff before merging.

@@ -1,3 +1,5 @@
+> AI (Claude) was used to format this document.
+
 # Baseline vs release comparison
 
 | | Baseline | Release candidate |

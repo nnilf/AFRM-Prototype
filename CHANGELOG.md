@@ -1,3 +1,5 @@
+> AI (Claude) was used to format this document.
+
 # Changelog
 
 ## V1.1.0 - 2026-11-08
