@@ -1,4 +1,4 @@
-# Planned challenge: one route with two different legs, chosen on purpose.
+# Planned challenge: one route with two different legs.
 # AFRM takes one speed and fuel flow per flight, so this shows a model limit, not a bug.
 # Leg 1: 400 km at 800 km/h and 2400 kg/h. Leg 2: 600 km at 600 km/h and 3000 kg/h.
 from calculations import flight_time_hours, fuel_at_arrival

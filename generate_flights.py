@@ -1,8 +1,6 @@
 # Makes flights.csv: 50 made-up flights for testing the program.
 # I used Claude (an AI assistant) to help pick aircraft types and fuel levels.
 # Figures are rough, in line with open models such as OpenAP, not real data.
-# Fuel flow varies by up to 10% and wind by up to 90 km/h.
-# Flights are 100 to 1500 km from destination with 45 min of protected fuel.
 # The seed is fixed so the file is the same every time.
 
 import csv

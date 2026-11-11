@@ -104,5 +104,5 @@ def test_cr001_cli_uses_route(tmp_path, capsys):
     # Route: 1.5 h, 6000 - 4200 = 1800 kg, margin 300. Endurance stays (6000 - 1500) / 2400
     assert flight_line(output, "FLT001").split()[1:7] == [
         "1.50", "1800", "300", "1.88", "1312", "CAUTION"]
-    # FLT002 has no route, so it keeps the original result: 6000 - 2400 x 1.5 = 2400
+    # FLT002 has no route: 6000 - 2400 x 1.5 = 2400
     assert flight_line(output, "FLT002").split()[1:3] == ["1.50", "2400"]

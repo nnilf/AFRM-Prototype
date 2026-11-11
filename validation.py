@@ -1,7 +1,7 @@
 import math
 
 
-# FR-01: turn a value into a number, or raise an error explaining what is wrong
+# FR-01: turn a value into a number, or raise a clear error
 def check_number(name, value, allow_zero=True):
     try:
         number = float(value)

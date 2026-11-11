@@ -1,7 +1,5 @@
-# Times plain Python against NumPy on 1,000 and 100,000 made-up flights,
-# then on 100,000 routes of 1, 3 and 5 segments.
-# Each timing is repeated 5 times and saved to benchmark_results.csv.
-# It then prints the median and standard deviation and checks the targets.
+# Times plain Python against NumPy on made-up flights and routes.
+# Each timing runs 5 times, is saved to benchmark_results.csv and checked against the targets.
 import csv
 import random
 import statistics
@@ -46,7 +44,7 @@ def run_numpy_routes(arrays):
     calculate_route_batch(*arrays)
 
 
-# Random segments: only the timing matters here, not the distances adding up
+# Random segments, since only the timing matters here
 def make_route(segment_count):
     return [(random.uniform(50, 500), random.uniform(400, 900), random.uniform(500, 7000))
             for _ in range(segment_count)]

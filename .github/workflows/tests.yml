@@ -1,4 +1,4 @@
-# Runs Ruff and all the tests on GitHub every time code is pushed or a pull request is opened.
+# Runs Ruff and the tests on every push and pull request.
 name: Tests
 
 on: [push, pull_request]
